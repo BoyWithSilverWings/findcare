@@ -1,6 +1,6 @@
 {
-  "name": "ui",
-  "short_name": "findcare",
+  "name": "findcare",
+  "short_name": "find-hospitals",
   "icons": [
     {
       "src": "/static/img/icons/android-chrome-192x192.png",

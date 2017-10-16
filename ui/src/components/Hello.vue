@@ -1,27 +1,20 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="http://chat.vuejs.org/" target="_blank" rel="noopener">Vue Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank" rel="noopener">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+  <section class="search-section">
+    <form>
+      <input 
+        type="text" 
+        name="search" 
+        placeholder="Search Terms..."
+        class="search-bar"
+      />
+      <button type="submit" class="search-button">Search</button>
+    </form>
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'hello',
+  name: 'search-section',
   data() {
     return {
       msg: 'Welcome to Your Vue.js PWA',
@@ -32,10 +25,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-h1, h2 {
-  font-weight: normal;
-}
-
 ul {
   list-style-type: none;
   padding: 0;
@@ -48,5 +37,58 @@ li {
 
 a {
   color: #35495E;
+}
+
+.search-section {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 2rem;
+}
+
+.search-bar {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+.search-bar:focus {
+  outline: none;
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+
+.search-button {
+  border: 3px solid #fff;
+  color: #fff;
+  background-color: #E91E63;
+  cursor: pointer;
+  padding: 20px 40px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  transition: all 0.3s;
+  transform: scale(0.9);
+}
+
+.search-button:hover {
+  background-color: white;
+  color: #E91E63;
+  border: 1px solid #E91E63;
+  transform: scale(1);
+}
+
+.search-button:focus {
+  outline: none;
 }
 </style>
