@@ -1,4 +1,14 @@
 {
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script",
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
+  },
+  "env": {
+    "node": true
+  },
   "extends": [
     "airbnb-base",
     "prettier"
