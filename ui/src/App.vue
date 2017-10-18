@@ -4,7 +4,6 @@
       <span>Find Hospitals</span>
     </header>
     <main>
-      <img src="./assets/logo.svg" alt="Find Hospitals" class="logo">
       <router-view></router-view>
     </main>
   </div>

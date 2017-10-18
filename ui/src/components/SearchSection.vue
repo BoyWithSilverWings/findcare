@@ -1,30 +1,32 @@
 <template>
   <section class="search-section">
-    <form>
-      <input 
-        type="text" 
-        name="search" 
-        placeholder="Search Terms..."
-        class="search-bar"
-      />
-      <button type="submit" class="search-button">Search</button>
-    </form>
+    
+  <img src="../assets/logo.svg" alt="Find Hospitals" class="logo">
+  <form v-on:submit.prevent="onSubmit">
+    <input 
+      type="text" 
+      name="search" 
+      placeholder="Search Terms..."
+      class="search-bar"
+    />
+    <button type="submit" class="search-button">Search</button>
+  </form>
   </section>
 </template>
 
 <script>
 export default {
   name: 'search-section',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js PWA',
-    };
+  methods: {
+    onSubmit(event) {
+      this.$router.push({ name: 'search', params: { q: event.target.search.value } });
+    },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 ul {
   list-style-type: none;
   padding: 0;
@@ -73,19 +75,17 @@ a {
   display: inline-block;
   margin: 15px 30px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-weight: 700;
   outline: none;
   position: relative;
   transition: all 0.3s;
-  transform: scale(0.9);
 }
 
 .search-button:hover {
   background-color: white;
   color: #E91E63;
   border: 1px solid #E91E63;
-  transform: scale(1);
 }
 
 .search-button:focus {
