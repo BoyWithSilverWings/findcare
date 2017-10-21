@@ -40,9 +40,14 @@ export default {
     fetchData() {
       this.loading = true;
       axios.post(`${constants.BASE_URL}/search`, {
-        query: 'lakeshore',
+        query: this.$route.params.q,
       }).then((response) => {
+        this.items = response.data;
         console.log(response.data);
+      }).catch((error) => {
+        this.error = error;
+      }).then(() => {
+        this.loading = false;
       });
     },
   },
