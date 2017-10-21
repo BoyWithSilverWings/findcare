@@ -45,6 +45,7 @@ a {
   width: 80%;
   margin: 0 auto;
   font-size: 2rem;
+  text-align: center;
 }
 
 .search-bar {
@@ -52,7 +53,7 @@ a {
   margin: 0;
   width: 100%;
   font-size: 18px;
-  appearance: none;
+  margin-top: 20px;
   box-shadow: none;
   border-radius: none;
   padding: 10px;
