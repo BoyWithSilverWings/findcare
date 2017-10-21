@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+import constants from '../constants';
 import Card from './Card';
 
 export default {
@@ -24,10 +26,25 @@ export default {
         { id: 1, name: 'One Hospital', location: 'Place 1' },
         { id: 2, name: 'Two Hospital', location: 'Place 2' },
       ],
+      loading: false,
+      error: false,
     };
   },
   components: {
     Card,
+  },
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      this.loading = true;
+      axios.post(`${constants.BASE_URL}/search`, {
+        query: 'lakeshore',
+      }).then((response) => {
+        console.log(response.data);
+      });
+    },
   },
 };
 </script>
