@@ -20,6 +20,7 @@ export default {
 <style>
 body {
   margin: 0;
+  height: 100%;
 }
 
 #app {
@@ -27,10 +28,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  height: 100%;
 }
 
 main {
   margin-top: 40px;
+  height: 100%;
 }
 
 header {

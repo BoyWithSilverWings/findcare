@@ -5,6 +5,7 @@
     </h3>
     <div class="result-container">
       <Card v-for="item in items" :key="item.id" v-bind:item="item" />
+      <Loader v-if="loading"/>
     </div>
     <modal name="geolocation"
          :width="300"
@@ -15,8 +16,8 @@
         <p>Please click <span class="green">allow</span> when prompted</p>
       </div>
       <div class="button-container">
-        <button class="btn okay-button" v-on:click="findLocation">DONE</button>
-        <button class="btn dismiss-button" v-on:click="dismissModal">NO, THANKS</button>
+        <button class="btn okay-button" v-on:click="findLocation">👍&nbsp; DONE</button>
+        <button class="btn dismiss-button" v-on:click="dismissModal">NO, THANKS 🙅‍♂️ </button>
       </div>
     </modal>
   </section>
@@ -26,6 +27,7 @@
 import axios from 'axios';
 import constants from '../constants';
 import Card from './Card';
+import Loader from './Loader';
 
 export default {
   name: 'nearest',
@@ -38,12 +40,14 @@ export default {
   },
   components: {
     Card,
+    Loader
   },
   mounted() {
     this.showModal();
   },
   methods: {
     findLocation() {
+      this.loading = true;
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition((position) => {
           const params = {
@@ -60,7 +64,6 @@ export default {
       this.dismissModal();
     },
     fetchData(coordinates) {
-      this.loading = true;
       axios.post(`${constants.BASE_URL}/nearest`, {
         query: coordinates,
       }).then((response) => {

@@ -5,6 +5,7 @@
     </h3>
     <div class="result-container">
       <Card v-for="item in items" :key="item.id" v-bind:item="item" />
+      <Loader v-if="loading"/>
     </div>
   </section>
 </template>
@@ -13,6 +14,7 @@
 import axios from 'axios';
 import constants from '../constants';
 import Card from './Card';
+import Loader from './Loader';
 
 export default {
   name: 'search-results',
@@ -26,6 +28,7 @@ export default {
   },
   components: {
     Card,
+    Loader,
   },
   created() {
     this.fetchData();
@@ -51,6 +54,7 @@ export default {
 <style scoped>
   .results-screen {
     margin: 0 auto;
+    height: 100%;
   }
   .search-term {
     text-decoration: underline;
@@ -60,6 +64,7 @@ export default {
   .result-container {
     display: flex;
     width: 100%;
+    height: 100%;
     flex-wrap: wrap;
     justify-content: center;
   }
