@@ -18,6 +18,7 @@
     "elasticsearch": "^13.3.1",
     "express": "^4.16.2",
     "helmet": "^3.9.0",
+    "mongodb": "^2.2.33",
     "morgan": "^1.9.0"
   },
   "lint-staged": {

@@ -1,0 +1,1 @@
+curl -XPUT 'localhost:9200/hospital?pretty' -H 'Content-Type:application/json' -d'{	"mappings": {		"article": {			"properties": {				"coordinates": {					"type":  "geo_point"				}, 				"name":  {					"type": "completion"				},        "discipline": {          "type": "keyword"        }			}		}	}}

@@ -1,5 +1,7 @@
 const fs = require('fs');
-const esClient = require('../controllers/esClient');
+const esClient = require('../models/esClient');
+const {MongoClient} = require('mongodb');
+const {MONGO_URL} = require('../constants');
 
 const bulkIndex = function bulkIndex(index, type, data) {
   const bulkBody = [];
@@ -28,16 +30,25 @@ const bulkIndex = function bulkIndex(index, type, data) {
   .catch(console.err);
 };
 
-// only for testing purposes
+// only for initialising purposes
 // all calls should be initiated through the module
-const test = function test() {
-  const articlesRaw = fs.readFileSync('hospital.json');
-  const articles = JSON.parse(articlesRaw);
-  console.log(`${articles.length} items parsed from data file`);
-  bulkIndex('hospital', 'article', articles);
+const initialize = function test() {
+  MongoClient.connect(MONGO_URL, (err, db)=> {
+    if (err) throw err;
+    db.collection("hospitals")
+      .find({}, {pin: false, tele: false, fax: false, state_ID: false, district_ID: false})
+      .toArray((err, results) => {
+        if (err) throw err;
+        results.forEach((result) => {
+          result.id = result._id;
+          delete result._id;
+        });
+        bulkIndex('hospital', 'article', results);
+    });
+  });
 };
 
-test();
+initialize();
 
 module.exports = {
   bulkIndex

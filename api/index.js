@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));    //  Serve static fil
 app.use('/api', apiRoutes );
 
 app.listen(constant.PORT, ()=>{
-  console.log(`Example app listening on port ${constant.PORT}!`);
+  console.log(`app listening on port ${constant.PORT}!`);
 });
 
 module.exports = app;

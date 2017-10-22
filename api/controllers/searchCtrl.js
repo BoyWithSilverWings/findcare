@@ -12,8 +12,7 @@ function search(req, res) {
     query: {
       multi_match: {
         query: req.body.query,
-        fields: ['name', 'location', 'discipline', 'address', 'state', 'district', 'specialities'],
-        fuzziness: 2
+        fields: ['name', 'location', 'discipline', 'address', 'state', 'district', 'specialities']
       }
     }
   };
