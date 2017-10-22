@@ -1,6 +1,5 @@
 <template>
   <section class="search-section">
-    
   <img src="../assets/logo.svg" alt="Find Hospitals" class="logo">
   <form v-on:submit.prevent="onSubmit">
     <input 
@@ -11,6 +10,7 @@
     />
     <button type="submit" class="search-button">Search</button>
   </form>
+  <button class="secondary-button nearest-hos">NEAREST HOSPITAL</button>
   </section>
 </template>
 
@@ -20,6 +20,17 @@ export default {
   methods: {
     onSubmit(event) {
       this.$router.push({ name: 'search', params: { q: event.target.search.value } });
+    },
+    nearestHospital() {
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const params = {
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          };
+          this.$router.push({ name: 'search', params });
+        });
+      }
     },
   },
 };
@@ -80,16 +91,30 @@ a {
   font-weight: 700;
   outline: none;
   position: relative;
-  transition: all 0.3s;
-}
-
-.search-button:hover {
-  background-color: white;
-  color: #E91E63;
-  border: 1px solid #E91E63;
 }
 
 .search-button:focus {
   outline: none;
 }
+
+.secondary-button {
+  background-color: white;
+  color: #E91E63;
+  border: 1px solid #E91E63;
+  cursor: pointer;
+  padding: 20px 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  outline: none;
+}
+
+.secondary-button:focus, 
+.secondary-button:active {
+  outline: none;
+}
+
+.nearest-hos {
+  margin-top: 2rem;
+}
+
 </style>
