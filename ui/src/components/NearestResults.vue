@@ -1,7 +1,7 @@
 <template>
   <section class="results-screen">
     <h3 class="title-text">
-      <span>Results for <span class="search-term">{{ q }}</span></span>
+      <span>Your Nearest Hospitals</span>
     </h3>
     <div class="result-container">
       <Card v-for="item in items" :key="item.id" v-bind:item="item" />
@@ -15,8 +15,7 @@ import constants from '../constants';
 import Card from './Card';
 
 export default {
-  name: 'search-results',
-  props: ['q'],
+  name: 'nearest',
   data() {
     return {
       items: [],
@@ -28,13 +27,26 @@ export default {
     Card,
   },
   created() {
-    this.fetchData();
+    this.findLocation();
   },
   methods: {
-    fetchData() {
+    findLocation() {
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const params = {
+            q: {
+              lat: position.coords.latitude,
+              lon: position.coords.longitude,
+            },
+          };
+          this.fetchData(params);
+        });
+      }
+    },
+    fetchData(coordinates) {
       this.loading = true;
       axios.post(`${constants.BASE_URL}/search`, {
-        query: this.$route.params.q,
+        query: coordinates,
       }).then((response) => {
         this.items = response.data;
         console.log(response.data);

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <header>
-      <span>Find Hospitals</span>
+      <router-link to="/">
+        <span>Find Hospitals</span>
+      </router-link>
     </header>
     <main>
       <router-view></router-view>
@@ -36,10 +38,9 @@ header {
   height: 56px;
   padding: 0 16px 0 24px;
   background-color: #35495E;
-  color: #ffffff;
 }
 
-header span {
+header a {
   display: block;
   position: relative;
   font-size: 20px;
@@ -48,6 +49,8 @@ header span {
   font-weight: 400;
   box-sizing: border-box;
   padding-top: 16px;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .logo {

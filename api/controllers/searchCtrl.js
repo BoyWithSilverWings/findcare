@@ -40,8 +40,8 @@ function nearestHospital(req, res) {
     sort: {
       "_geo_distance": {
         "coordinates": {
-          "lat": 10.177,
-          "lon": 76.210
+          "lat": 9.93,
+          "lon": 76.26,
         },
         "order": "asc",
         "unit": "km",

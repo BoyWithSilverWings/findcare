@@ -10,7 +10,9 @@
     />
     <button type="submit" class="search-button">Search</button>
   </form>
-  <button class="secondary-button nearest-hos">NEAREST HOSPITAL</button>
+  <button class="secondary-button nearest-hos" v-on:click.prevent="nearestHospital">
+    FIND NEAREST HOSPITAL
+  </button>
   </section>
 </template>
 
@@ -22,15 +24,7 @@ export default {
       this.$router.push({ name: 'search', params: { q: event.target.search.value } });
     },
     nearestHospital() {
-      if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          const params = {
-            lat: position.coords.latitude,
-            lon: position.coords.longitude,
-          };
-          this.$router.push({ name: 'search', params });
-        });
-      }
+      this.$router.push({ name: 'nearest' });
     },
   },
 };
