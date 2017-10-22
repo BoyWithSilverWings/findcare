@@ -57,6 +57,10 @@ header a {
   width: 35vmin;
 }
 
+.green {
+  color: #00E676;
+}
+
 .title-text {
   text-align: center;
   font-size: 2rem;

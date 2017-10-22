@@ -37,7 +37,6 @@ export default {
         query: this.$route.params.q,
       }).then((response) => {
         this.items = response.data;
-        console.log(response.data);
       }).catch((error) => {
         this.error = error;
       }).then(() => {
