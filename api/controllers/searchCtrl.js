@@ -1,5 +1,5 @@
 const constants = require('../constants');
-const searchHospitals = require('../models/searchHospitals');
+const Hospitals = require('../models/Hospitals');
 
 function suggestions(req, res) {
   res.end('Done');
@@ -16,7 +16,7 @@ function search(req, res) {
       }
     }
   };
-  searchHospitals(constants.INDEX, body).then((data)=>{
+  Hospitals.search(constants.INDEX, body).then((data)=>{
     const response = [];
     if(!data.hits) {
       res.status(200).json({message: 'Data not found'});
@@ -39,8 +39,8 @@ function nearestHospital(req, res) {
     sort: {
       "_geo_distance": {
         "coordinates": {
-          "lat": 9.93,
-          "lon": 76.26,
+          "lat": 9.9312328,
+          "lon": 76.26730409999999,
         },
         "order": "asc",
         "unit": "km",
@@ -48,17 +48,20 @@ function nearestHospital(req, res) {
       }
     }
   }
-  searchHospitals(constants.INDEX, body).then((data) => {
-    const response = [];
-    if (!data.hits) {
-      res.status(200).json({ message: 'Data not found' });
-    }
-    console.log(data.hits.hits);
-    data.hits.hits.forEach((hit) => {
+  Hospitals.search(constants.INDEX, body)
+    .then((data) => {
+      const response = [];
+      if (!data.hits) {
+        res.status(200).json({ message: 'Data not found' });
+      }
+      data.hits.hits.forEach((hit) => {
       response.push(hit._source);
     });
     res.status(200).json(response);
-  })
+    })
+    .catch((error) => {
+      res.status(500).json(error);
+    });
 }
 
 module.exports = {
