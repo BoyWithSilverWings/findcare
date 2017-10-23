@@ -68,7 +68,6 @@ export default {
         query: coordinates,
       }).then((response) => {
         this.items = response.data;
-        console.log(response.data);
       }).catch((error) => {
         this.error = error;
       }).then(() => {

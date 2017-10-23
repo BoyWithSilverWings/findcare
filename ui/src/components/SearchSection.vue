@@ -7,6 +7,8 @@
       name="search" 
       placeholder="Search Terms..."
       class="search-bar"
+      v-model.trim="searchTerm"
+      v-on:input="showSuggestions"
     />
     <button type="submit" class="search-button">Search</button>
   </form>
@@ -17,14 +19,38 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { BASE_URL } from '../constants';
+
 export default {
   name: 'search-section',
+  data() {
+    return {
+      searchTerm: '',
+      items: [],
+    };
+  },
   methods: {
-    onSubmit(event) {
-      this.$router.push({ name: 'search', params: { q: event.target.search.value } });
+    onSubmit() {
+      this.$router.push({ name: 'search', params: { q: this.searchTerm } });
     },
     nearestHospital() {
       this.$router.push({ name: 'nearest' });
+    },
+    showSuggestions() {
+      console.log(this.searchTerm);
+    },
+    fetchData() {
+      this.loading = true;
+      axios.post(`${BASE_URL}/suggest`, {
+        query: this.searchTerm,
+      }).then((response) => {
+        this.items = response.data;
+      }).catch((error) => {
+        this.error = error;
+      }).then(() => {
+        this.loading = false;
+      });
     },
   },
 };
