@@ -2,7 +2,25 @@ const constants = require('../constants');
 const Hospitals = require('../models/Hospitals');
 
 function suggestions(req, res) {
-  res.end('Done');
+  const body = {
+    "_source": "suggest",
+    "suggest": {
+      "article": {
+        "prefix": req.body.q,
+        "completion": {
+          "field": "name",
+          "size": 5,
+          "fuzzy": {
+            "fuzziness": 2
+          }
+        }
+      }
+    }
+  }
+  Hospitals.search(constants.INDEX, body)
+    .then((data)=>{
+      res.status(200).json(data);
+    });
 }
 
 function search(req, res) {
