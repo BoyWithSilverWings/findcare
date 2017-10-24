@@ -12,7 +12,7 @@
 
 <script>
 import axios from 'axios';
-import constants from '../constants';
+import { BASE_URL } from '../constants';
 import Card from './Card';
 import Loader from './Loader';
 
@@ -36,7 +36,7 @@ export default {
   methods: {
     fetchData() {
       this.loading = true;
-      axios.post(`${constants.BASE_URL}/search`, {
+      axios.post(`${BASE_URL}/search`, {
         query: this.$route.params.q,
       }).then((response) => {
         this.items = response.data;

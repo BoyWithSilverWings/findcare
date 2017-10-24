@@ -25,7 +25,7 @@
 
 <script>
 import axios from 'axios';
-import constants from '../constants';
+import { BASE_URL } from '../constants';
 import Card from './Card';
 import Loader from './Loader';
 
@@ -40,7 +40,7 @@ export default {
   },
   components: {
     Card,
-    Loader
+    Loader,
   },
   mounted() {
     this.showModal();
@@ -64,7 +64,7 @@ export default {
       this.dismissModal();
     },
     fetchData(coordinates) {
-      axios.post(`${constants.BASE_URL}/nearest`, {
+      axios.post(`${BASE_URL}/nearest`, {
         query: coordinates,
       }).then((response) => {
         this.items = response.data;
@@ -79,7 +79,7 @@ export default {
     },
     dismissModal() {
       this.$modal.hide('geolocation');
-    }
+    },
   },
 };
 </script>
