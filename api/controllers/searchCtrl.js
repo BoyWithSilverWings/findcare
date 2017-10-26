@@ -18,7 +18,8 @@ function suggestions(req, res) {
     }
   };
   Hospitals.search(constants.INDEX, body).then(data => {
-    res.status(200).json(data);
+    const resData = data.suggest.article[0].options;
+    res.status(200).json(resData);
   });
 }
 
@@ -60,10 +61,7 @@ function nearestHospital(req, res) {
     query: {},
     sort: {
       _geo_distance: {
-        coordinates: {
-          lat: 9.9312328,
-          lon: 76.26730409999999
-        },
+        coordinates: req.body.query,
         order: "asc",
         unit: "km",
         distance_type: "plane"

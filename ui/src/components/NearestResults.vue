@@ -50,13 +50,11 @@ export default {
       this.loading = true;
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition((position) => {
-          const params = {
-            coordinates: {
-              lat: position.coords.latitude,
-              lon: position.coords.longitude,
-            },
+          const coordinates = {
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
           };
-          this.fetchData(params);
+          this.fetchData(coordinates);
         });
       } else {
         console.log('Location not available');

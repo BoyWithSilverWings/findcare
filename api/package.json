@@ -22,10 +22,13 @@
     "morgan": "^1.9.0"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
+    "gitDir": "../",
+    "linters": {
+      "*.js": [
+        "prettier --write",
+        "git add"
+      ]
+    }
   },
   "devDependencies": {
     "eslint": "^4.9.0",

@@ -57,7 +57,7 @@ header a {
 }
 
 .logo {
-  width: 35vmin;
+  width: 30vmin;
 }
 
 .green {
