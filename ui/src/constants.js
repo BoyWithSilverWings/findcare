@@ -18,4 +18,49 @@ const TYPES = [
   "Dispensary/ Poly Clinic "
 ];
 
-export { BASE_URL, TYPES };
+const STATES = [
+  "Andaman and Nicobar Islands",
+  "Andhra Pradesh",
+  "Andhra Pradesh ",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chandigarh",
+  "Chhattisgarh",
+  "Dadra and Nagar Haveli",
+  "Daman and Diu",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Himachal Pradesh ",
+  "Jammu and Kashmir",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Lakshadweep",
+  "Maharashtra",
+  "Madhya Pradesh ",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Meghalaya ",
+  "Nagaland",
+  "Odisha",
+  "Puducherry",
+  "Punjab",
+  "Rajasthan",
+  "Tamil Nadu",
+  "Rajasthan ",
+  "Sikkim",
+  "Telangana",
+  "Telangana ",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  "North Twenty Four Parganas"
+];
+
+export { BASE_URL, TYPES, STATES };
