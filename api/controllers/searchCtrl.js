@@ -28,17 +28,18 @@ function search(req, res) {
     size: 20,
     from: req.body.from || 0,
     query: {
-      multi_match: {
-        query: req.body.query,
-        fields: [
-          "name",
-          "location",
-          "discipline",
-          "address",
-          "state",
-          "district",
-          "specialities"
-        ]
+      bool: {
+        must: {
+          multi_match: {
+            "query": req.body.query,
+            "fields": ["name", "address", "state", "location"]
+          },
+        },
+        filter: {
+          term: {
+            "state": req.body.state ? req.body.state:'*'
+          }
+        }
       }
     }
   };
