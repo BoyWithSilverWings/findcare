@@ -1,1 +1,27 @@
-curl -XPUT 'localhost:9200/hospital?pretty' -H 'Content-Type:application/json' -d'{	"mappings": {		"article": {			"properties": {				"coordinates": {					"type":  "geo_point"				}, 				"type":  {					"type": "keyword"				},        "discipline": {          "type": "keyword"        }			}		}	}}
+curl -XPUT 'localhost:9200/findhospitals?pretty' -H 'Content-Type:application/json' -d'{
+  "mappings": {
+    "hospital": {
+      "properties": {
+        "coordinates": {
+          "type":  "geo_point"
+        },
+        "name": {   
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "completion"
+            }
+          }    
+        },
+        "type":  {
+          "type": "keyword"
+        },
+        "discipline": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}'
+
+curl -XDELETE 'localhost:9200/findhospitals?pretty'

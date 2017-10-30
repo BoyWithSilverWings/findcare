@@ -5,10 +5,10 @@ function suggestions(req, res) {
   const body = {
     _source: "suggest",
     suggest: {
-      article: {
+      hospital: {
         prefix: req.body.q,
         completion: {
-          field: "name",
+          field: "name.raw",
           size: 5,
           fuzzy: {
             fuzziness: 2
@@ -18,8 +18,8 @@ function suggestions(req, res) {
     }
   };
   Hospitals.search(constants.INDEX, body).then(data => {
-    const resData = data.suggest.article[0].options;
-    res.status(200).json(resData);
+    const resData = data.suggest.hospital[0].options;
+    res.status(200).json(data);
   });
 }
 

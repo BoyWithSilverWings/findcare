@@ -1,6 +1,6 @@
-const PORT = '8000';
-const INDEX = 'hospital';
-const TYPE = 'article';
+const PORT = "8000";
+const INDEX = "findhospitals";
+const TYPE = "hospitals";
 const MONGO_URL = "mongodb://localhost:27017/findhospitals";
 
 module.exports = {

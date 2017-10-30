@@ -20,7 +20,7 @@ export default {
 <style>
 body {
   margin: 0;
-  height: 100%;
+  min-height: 100%;
 }
 
 #app {
@@ -33,7 +33,7 @@ body {
 
 main {
   margin-top: 40px;
-  height: 100%;
+  min-height: 100%;
 }
 
 header {
@@ -41,6 +41,9 @@ header {
   height: 50px;
   padding: 0 16px 0 24px;
   background-color: #35495E;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 header a {
