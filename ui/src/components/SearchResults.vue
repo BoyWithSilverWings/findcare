@@ -61,6 +61,7 @@ export default {
     margin: 0 auto;
     min-height: 100%;
     padding-bottom: 50px;
+    overflow: hidden;
   }
 
   .search-term {
@@ -71,9 +72,10 @@ export default {
 
   .result-container {
     display: flex;
-    width: 80%;
+    width: 72%;
+    overflow-y: auto;
     min-height: 100%;
-    margin-left: 20%;
+    margin-left: 25%;
     background-color: #F5F5F5;
     flex-wrap: wrap;
     justify-content: center;

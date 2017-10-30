@@ -9,7 +9,7 @@
         </label>
       </li>
     </ul>
-    <a v-on:click="show('types')">show more</a>
+    <a v-on:click="show('')" class="moreorless">show more</a>
   </div>
 </template>
 
@@ -32,6 +32,12 @@ export default {
 
   .filter-head {
     list-style-type: none;
+  }
+
+  .moreorless {
+    color: #EC407A;
+    display: block;
+    text-align: center;
   }
 </style>
 

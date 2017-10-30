@@ -16,7 +16,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .card {
-    width: 20%;
+    width: 100%;
     overflow: hidden;
     display: inline-block;
     margin: 1rem;

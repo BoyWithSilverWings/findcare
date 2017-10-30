@@ -1,6 +1,6 @@
 <template>
   <section class="filter-bar">
-    <h2 class="title">FILTER RESULTS</h2>
+    <h3 class="title">FILTER RESULTS</h3>
     <SingleFilter heading="types" v-bind:items="types" />
     <SingleFilter heading="states" v-bind:items="states" />
   </section>
@@ -22,4 +22,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .title {
+    text-align: center;
+  }
+</style>
+
 

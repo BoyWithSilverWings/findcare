@@ -99,6 +99,7 @@ a {
   margin: 0 auto;
   font-size: 2rem;
   text-align: center;
+  margin-top: 5rem;
 }
 
 .search-bar {
@@ -196,7 +197,7 @@ a {
 }
 
 .nearest-hos {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 </style>
