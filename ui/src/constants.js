@@ -63,4 +63,17 @@ const STATES = [
   "North Twenty Four Parganas"
 ];
 
-export { BASE_URL, TYPES, STATES };
+const DISCIPLINE = [
+  "Allopathic",
+  "Ayush/ Homeopathy",
+  "Allopathic, Ayush/ Homeopathy ",
+  "Allopathic, Ayush/ Ayurveda",
+  "Allopathic, Ayush/ Ayurveda/ Unani/ Homeopathy",
+  "Allopathic, Ayush/ Ayurveda/ Naturopathy",
+  "Ayush/ Ayurveda",
+  "Ayush/ Ayurveda/ Siddha",
+  "Allopathic, Ayush/ Homeopathy",
+  "Allopathic, Ayush/ Ayurveda/ Homeopathy"
+];
+
+export { BASE_URL, TYPES, STATES, DISCIPLINE };
