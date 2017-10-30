@@ -19,7 +19,7 @@ function suggestions(req, res) {
   };
   Hospitals.search(constants.INDEX, body).then(data => {
     const resData = data.suggest.hospital[0].options;
-    res.status(200).json(resData);
+    res.status(200).json(data);
   });
 }
 

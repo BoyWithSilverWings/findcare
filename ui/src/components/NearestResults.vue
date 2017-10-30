@@ -87,11 +87,11 @@ export default {
   .results-screen {
     margin: 0 auto;
   }
-  .search-term {
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    color: #E91E63; 
+
+  .title-text {
+    margin-top: 4rem;
   }
+
   .result-container {
     display: flex;
     width: 100%;
