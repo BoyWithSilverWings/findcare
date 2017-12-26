@@ -3,8 +3,8 @@
     <h4 class="title">{{heading}}</h4>
     <ul class="filter-head">
       <li v-for="item in items" v-bind:key="item">
-        <label for="">
-          <input type="checkbox"/>
+        <label v-bind:for="item" class="label">
+          <input type="checkbox" v-bind:id="item" v-bind:value="item" v-on:change="onChange($event.target.value)"/>
           {{item}}
         </label>
       </li>
@@ -20,6 +20,12 @@ export default {
     'heading',
     'items'
   ],
+  methods: {
+    onChange(value) {
+      const name = this.heading;
+      this.$emit('filterChange', { name, value });
+    }
+  }
 };
 </script>
 
@@ -28,6 +34,10 @@ export default {
     font-weight: 300;
     text-align: center;
     text-transform: uppercase;
+  }
+
+  .label {
+    user-select: none; 
   }
 
   .filter-head {

@@ -14,10 +14,28 @@ curl -XPUT 'localhost:9200/findhospitals?pretty' -H 'Content-Type:application/js
           }    
         },
         "type":  {
-          "type": "keyword"
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }  
+        },
+        "state":  {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }  
         },
         "discipline": {
-          "type": "keyword"
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }  
         }
       }
     }

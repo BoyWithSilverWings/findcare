@@ -19,7 +19,7 @@ function suggestions(req, res) {
   };
   Hospitals.search(constants.INDEX, body).then(data => {
     const resData = data.suggest.hospital[0].options;
-    res.status(200).json(data);
+    res.status(200).json(resData);
   });
 }
 
@@ -34,11 +34,6 @@ function search(req, res) {
             "query": req.body.query,
             "fields": ["name", "address", "state", "location"]
           },
-        },
-        filter: {
-          term: {
-            "state": req.body.state ? req.body.state:'*'
-          }
         }
       }
     }
@@ -54,6 +49,20 @@ function search(req, res) {
     res.status(200).json(response);
   });
 }
+
+function searchFilter(req, res) {
+  Hospitals.search(constants.INDEX, req.body).then(data => {
+    const response = [];
+    if (!data.hits) {
+      res.status(200).json({ message: "Data not found" });
+    }
+    data.hits.hits.forEach(hit => {
+      response.push(hit._source);
+    });
+    res.status(200).json(response);
+  });
+}
+
 
 function nearestHospital(req, res) {
   const body = {
@@ -88,5 +97,6 @@ function nearestHospital(req, res) {
 module.exports = {
   suggestions,
   search,
+  searchFilter,
   nearestHospital
 };

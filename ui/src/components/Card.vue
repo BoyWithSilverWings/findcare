@@ -26,6 +26,12 @@ export default {
     padding: 0 10px;
     border: 1px solid #F8BBD0;
     cursor: pointer;
+    box-shadow: none;
+    transition: box-shadow 0.5s ease-in-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.3);
   }
 
   .subheading {

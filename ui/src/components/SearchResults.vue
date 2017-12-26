@@ -4,7 +4,7 @@
       <span>Results for <span class="search-term">{{ q }}</span></span>
     </h3>
     <div class="filter-section">
-      <FilterBar/>
+      <FilterBar @filterChange="filterChange"/>
     </div>
     <div class="result-container">
       <Card v-for="item in items" :key="item.id" v-bind:item="item" />
@@ -16,6 +16,7 @@
 <script>
 import axios from 'axios';
 import { BASE_URL } from '../constants';
+import setFilter from '../providers/setFilter';
 import Card from './Card';
 import Loader from './Loader';
 import FilterBar from './FilterBar';
@@ -28,6 +29,11 @@ export default {
       items: [],
       loading: false,
       error: false,
+      filters: {
+        states: new Set(),
+        types: new Set(),
+        disciplines: new Set()
+      }
     };
   },
   components: {
@@ -39,6 +45,7 @@ export default {
     this.fetchData();
   },
   methods: {
+
     fetchData() {
       this.loading = true;
       axios.post(`${BASE_URL}/search`, {
@@ -50,6 +57,25 @@ export default {
       }).then(() => {
         this.loading = false;
       });
+    },
+
+    filterChange(filter) {
+      this.loading = true;
+      const selectedFilter = this.filters[filter.name];
+      const value = filter.value;
+      if (selectedFilter.has(value)) {
+        selectedFilter.delete(value);
+      } else {
+        selectedFilter.add(value);
+      }
+      setFilter(this.$route.params.q, this.filters)
+        .then((response) => {
+          this.items = response.data;
+        }).catch((error) => {
+          console.log(error);
+        }).then(() => {
+          this.loading = false;
+        });
     },
   },
 };
@@ -72,11 +98,10 @@ export default {
 
   .result-container {
     display: flex;
-    width: 72%;
+    width: 68%;
     overflow-y: auto;
     min-height: 100%;
-    margin-left: 25%;
-    background-color: #F5F5F5;
+    margin-left: 30%;
     flex-wrap: wrap;
     justify-content: center;
   }
