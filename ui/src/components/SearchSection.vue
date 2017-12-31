@@ -90,6 +90,10 @@ li {
   margin: 0 10px;
 }
 
+li:last-child {
+  margin-bottom: 10px;
+}
+
 a {
   color: #35495E;
 }

@@ -7,8 +7,8 @@
       <FilterBar @filterChange="filterChange"/>
     </div>
     <div class="result-container">
-      <Card v-for="item in items" :key="item.id" v-bind:item="item" />
-      <Loader v-if="loading"/>
+        <Card v-for="item in items" :key="item.id" v-bind:item="item" />
+      <Loader v-if="loading" />
     </div>
   </section>
 </template>

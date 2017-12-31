@@ -11,7 +11,7 @@ function suggestions(req, res) {
           field: "name.raw",
           size: 5,
           fuzzy: {
-            fuzziness: 2
+            fuzziness: 0
           }
         }
       }
